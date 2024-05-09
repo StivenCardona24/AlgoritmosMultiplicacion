@@ -1,0 +1,10 @@
+Inglesa Recursivo Estatico: 337600 milisegundos
+Inglesa Iterativo Dinamico: 343000 milisegundos
+Inglesa Iterativo Estatico: 357400 milisegundos
+Americano Iterativo Dinamico: 394800 milisegundos
+Inglesa Recursivo Dinamico: 399800 milisegundos
+Americano Recursivo Dinamico: 554900 milisegundos
+Divide y Venceras: 580400 milisegundos
+Americano Recursivo Estatico: 587400 milisegundos
+Hindu Iterativo Estatico: 633900 milisegundos
+Americano Iterativo Estatico: 1707500 milisegundos

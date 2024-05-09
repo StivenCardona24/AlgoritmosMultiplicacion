@@ -24,8 +24,8 @@ import Inglesa.InglesaRecursivoEstatico;
 public class Aplicacion {
 
 	public static void main(String[] args) {
-		int tam1 = 5; // Tamaño deseado para los arreglos
-		int tam2 = 5;
+		int tam1 = 7; // Tamaño deseado para los arreglos
+		int tam2 = 7;
 
 		int[] arregloEstatico1 = ObtenerArreglo(1, tam1);
 		int[] arregloEstatico2 = ObtenerArreglo(2, tam2);
@@ -54,78 +54,78 @@ public class Aplicacion {
 		System.out.println(Arrays.toString(arregloEstatico2));
 
 		Map<String, Long> tiempos = new LinkedHashMap<>();
-		long startTime = System.currentTimeMillis();
+		long startTime = System.nanoTime();
 		InglesaIterativoEstatico.multiplicaInglesa(arregloEstatico1, arregloEstatico2);
-		long endTime = System.currentTimeMillis();
+		long endTime = System.nanoTime();
 		long elapsedTime = endTime - startTime;
 		tiempos.put("Inglesa Iterativo Estatico", elapsedTime);
 
-		startTime = System.currentTimeMillis();
+		startTime = System.nanoTime();
 		InglesaIterativoDinamico.multiplicaInglesa(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
-		endTime = System.currentTimeMillis();
+		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Inglesa Iterativo Dinamico", elapsedTime);
 
 		arregloEstatico1 = ObtenerArreglo(1, tam1);
 		arregloEstatico2 = ObtenerArreglo(2, tam2);
-		startTime = System.currentTimeMillis();
+		startTime = System.nanoTime();
 		InglesaRecursivoEstatico.multiplicaInglesaRecursiva(arregloEstatico1, arregloEstatico2);
-		endTime = System.currentTimeMillis();
+		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Inglesa Recursivo Estatico", elapsedTime);
 
-		startTime = System.currentTimeMillis();
+		startTime = System.nanoTime();
 		InglesaRecursivoDinamico.multiplicaInglesaRecursiva(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
-		endTime = System.currentTimeMillis();
+		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Inglesa Recursivo Dinamico", elapsedTime);
 
 		arregloEstatico1 = ObtenerArreglo(1, tam1);
 		arregloEstatico2 = ObtenerArreglo(2, tam2);
-		startTime = System.currentTimeMillis();
+		startTime = System.nanoTime();
 		hinduIterativoEstatico.hindu(arregloEstatico1, arregloEstatico2);
-		endTime = System.currentTimeMillis();
+		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Hindu Iterativo Estatico", elapsedTime);
 
 		arregloEstatico1 = ObtenerArreglo(1, tam1);
 		arregloEstatico2 = ObtenerArreglo(2, tam2);
-		startTime = System.currentTimeMillis();
-		AmericanoIterativoEstatico.americano(arregloEstatico1, arregloEstatico2);
-		endTime = System.currentTimeMillis();
+		startTime = System.nanoTime();
+		AmericanoIterativoEstatico.Multitradicional2(arregloEstatico1, arregloEstatico2);
+		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Americano Iterativo Estatico", elapsedTime);
 
-		startTime = System.currentTimeMillis();
+		startTime = System.nanoTime();
 		AmericanoIterativoEstaticoDinamico.Multitradicional2(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
-		endTime = System.currentTimeMillis();
+		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Americano Iterativo Dinamico", elapsedTime);
 
-		startTime = System.currentTimeMillis();
+		startTime = System.nanoTime();
 		AmericanoRecursivoDinamico.americanoRecursivo(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
-		endTime = System.currentTimeMillis();
+		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Americano Recursivo Dinamico", elapsedTime);
 
 		arregloEstatico1 = ObtenerArreglo(1, tam1);
 		arregloEstatico2 = ObtenerArreglo(2, tam2);
-		startTime = System.currentTimeMillis();
+		startTime = System.nanoTime();
 		AmricanoRecursivoEstatico.americanoRecursivo(arregloEstatico1, arregloEstatico2);
-		endTime = System.currentTimeMillis();
+		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Americano Recursivo Estatico", elapsedTime);
 
 		arregloEstatico1 = ObtenerArreglo(1, tam1);
 		arregloEstatico2 = ObtenerArreglo(2, tam2);
-		startTime = System.currentTimeMillis();
+		startTime = System.nanoTime();
 		DV.dv1(arregloEstatico1, arregloEstatico2, tam1);
-		endTime = System.currentTimeMillis();
+		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Divide y Venceras", elapsedTime);
 
 		ordenarTiempos(tiempos);
-		guardarComoTXT(tiempos, "tiempos"+ tam1 + "*" + tam2 + ".txt");
+		guardarComoTXT(tiempos, "tiempos"+ tam1 + "x" + tam2 + ".txt");
 
 
 
@@ -196,7 +196,7 @@ public class Aplicacion {
 
 		Map <String, Long> tiemposOrdenados = new LinkedHashMap<>();
 		for (Object key : keys) {
-			System.out.println(key + ": " + tiempos.get(key) + " milisegundos");
+			System.out.println(key + ": " + tiempos.get(key) + " nanosegundos");
 			tiemposOrdenados.put((String) key, tiempos.get(key));
 			
 		}
@@ -210,7 +210,7 @@ public class Aplicacion {
 			try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
 				// Escribir cada algoritmo y su tiempo de ejecución en el archivo
 				for (Map.Entry<String, Long> entry : tiempos.entrySet()) {
-					writer.write(entry.getKey() + ": " + entry.getValue() + " milisegundos");
+					writer.write(entry.getKey() + ": " + entry.getValue() + " nanosegundos");
 					writer.newLine();
 				}
 				System.out.println("Datos de tiempo de ejecución guardados correctamente en formato TXT.");
