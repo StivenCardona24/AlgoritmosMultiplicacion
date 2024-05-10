@@ -55,74 +55,83 @@ public class Aplicacion {
 
 		Map<String, Long> tiempos = new LinkedHashMap<>();
 		long startTime = System.nanoTime();
-		InglesaIterativoEstatico.multiplicaInglesa(arregloEstatico1, arregloEstatico2);
+		int[] resultado = InglesaIterativoEstatico.multiplicaInglesa(arregloEstatico1, arregloEstatico2);
 		long endTime = System.nanoTime();
 		long elapsedTime = endTime - startTime;
 		tiempos.put("Inglesa Iterativo Estatico", elapsedTime);
+		System.out.println("Resultado de la multiplicación Inglesa Iterativo Estatico: " + Arrays.toString(resultado) + "\n");
 
 		startTime = System.nanoTime();
-		InglesaIterativoDinamico.multiplicaInglesa(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
+		ArrayList<Integer> resultadoDinamico = InglesaIterativoDinamico.multiplicaInglesa(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
 		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Inglesa Iterativo Dinamico", elapsedTime);
+		System.out.println("Resultado de la multiplicación Inglesa Iterativo Dinamico: " + resultadoDinamico + "\n");
 
 		arregloEstatico1 = ObtenerArreglo(1, tam1);
 		arregloEstatico2 = ObtenerArreglo(2, tam2);
 		startTime = System.nanoTime();
-		InglesaRecursivoEstatico.multiplicaInglesaRecursiva(arregloEstatico1, arregloEstatico2);
+		resultado = InglesaRecursivoEstatico.multiplicaInglesaRecursiva(arregloEstatico1, arregloEstatico2);
 		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Inglesa Recursivo Estatico", elapsedTime);
+		System.out.println("Resultado de la multiplicación Inglesa Recursivo Estatico: " + Arrays.toString(resultado) + "\n");
 
 		startTime = System.nanoTime();
-		InglesaRecursivoDinamico.multiplicaInglesaRecursiva(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
+		resultadoDinamico = InglesaRecursivoDinamico.multiplicaInglesaRecursiva(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
 		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Inglesa Recursivo Dinamico", elapsedTime);
+		System.out.println("Resultado de la multiplicación Inglesa Recursivo Dinamico: " + resultadoDinamico + "\n");
 
 		arregloEstatico1 = ObtenerArreglo(1, tam1);
 		arregloEstatico2 = ObtenerArreglo(2, tam2);
 		startTime = System.nanoTime();
-		hinduIterativoEstatico.hindu(arregloEstatico1, arregloEstatico2);
+		resultado = hinduIterativoEstatico.hindu(arregloEstatico1, arregloEstatico2);
 		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Hindu Iterativo Estatico", elapsedTime);
+		System.out.println("Resultado de la multiplicación Hindu Iterativo Estatico: " + Arrays.toString(resultado) + "\n");
 
 		arregloEstatico1 = ObtenerArreglo(1, tam1);
 		arregloEstatico2 = ObtenerArreglo(2, tam2);
 		startTime = System.nanoTime();
-		AmericanoIterativoEstatico.Multitradicional2(arregloEstatico1, arregloEstatico2);
+		resultado = AmericanoIterativoEstatico.Multitradicional2(arregloEstatico1, arregloEstatico2);
 		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Americano Iterativo Estatico", elapsedTime);
+		System.out.println("Resultado de la multiplicación Americano Iterativo Estatico: " + Arrays.toString(resultado) + "\n");
 
 		startTime = System.nanoTime();
-		AmericanoIterativoEstaticoDinamico.Multitradicional2(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
+		resultadoDinamico = AmericanoIterativoEstaticoDinamico.Multitradicional2(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
 		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Americano Iterativo Dinamico", elapsedTime);
+		System.out.println("Resultado de la multiplicación Americano Iterativo Dinamico: " + resultadoDinamico + "\n");
 
 		startTime = System.nanoTime();
-		AmericanoRecursivoDinamico.MultitradicionalRecursivo(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
+		resultadoDinamico = AmericanoRecursivoDinamico.MultitradicionalRecursivo(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
 		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Americano Recursivo Dinamico", elapsedTime);
+		System.out.println("Resultado de la multiplicación Americano Recursivo Dinamico: " + resultadoDinamico + "\n");
 
 		arregloEstatico1 = ObtenerArreglo(1, tam1);
 		arregloEstatico2 = ObtenerArreglo(2, tam2);
 		startTime = System.nanoTime();
-		AmricanoRecursivoEstatico.MultitradicionalRecursivo(arregloEstatico1, arregloEstatico2);
+		resultado =  AmricanoRecursivoEstatico.MultitradicionalRecursivo(arregloEstatico1, arregloEstatico2);
 		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Americano Recursivo Estatico", elapsedTime);
+		System.out.println("Resultado de la multiplicación Americano Recursivo Estatico: " + Arrays.toString(resultado) + "\n");
 
-		arregloEstatico1 = ObtenerArreglo(1, tam1);
-		arregloEstatico2 = ObtenerArreglo(2, tam2);
-		startTime = System.nanoTime();
-		DV.dv1(arregloEstatico1, arregloEstatico2, tam1);
-		endTime = System.nanoTime();
-		elapsedTime = endTime - startTime;
-		tiempos.put("Divide y Venceras", elapsedTime);
+		// arregloEstatico1 = ObtenerArreglo(1, tam1);
+		// arregloEstatico2 = ObtenerArreglo(2, tam2);
+		// startTime = System.nanoTime();
+		// DV.dv1(arregloEstatico1, arregloEstatico2, tam1);
+		// endTime = System.nanoTime();
+		// elapsedTime = endTime - startTime;
+		// tiempos.put("Divide y Venceras", elapsedTime);
 
 		ordenarTiempos(tiempos);
 		guardarComoTXT(tiempos, "tiempos"+ tam1 + "x" + tam2 + ".txt");

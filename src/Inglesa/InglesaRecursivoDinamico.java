@@ -85,11 +85,6 @@ public class InglesaRecursivoDinamico {
 		
 		// Si se ha llegado al final del segundo número, se agrega un cero al resultado
 		if (j < arrNum2.size() && i < arrNum2.size()) {
-			System.out.println("i: " + i + " j: " + j);
-			System.out.println("resultado: " + resultado.get(i+j+1));
-			System.out.println("arrNum1: " + arrNum1.get(j));
-			System.out.println("arrNum2: " + arrNum2.get(i));
-
 			resultado.set(i+j+1, resultado.get(j+i+1) + arrNum1.get(j) * arrNum2.get(i));
 			return calcularMultiplicacion(arrNum1, arrNum2, resultado, i , j+1);
 		}

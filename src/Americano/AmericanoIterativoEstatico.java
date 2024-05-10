@@ -25,10 +25,6 @@ public class AmericanoIterativoEstatico {
 			pos--;
 			k--;
 		}
-		System.out.println("AMERICANO RESULTADO: ");
-		for (int i = 0; i < resultado.length; i++) {
-			System.out.print(resultado[i]);
-		}
 		return resultado;
 	}
 

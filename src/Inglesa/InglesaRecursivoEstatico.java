@@ -97,10 +97,6 @@ public class InglesaRecursivoEstatico {
         // Si se ha llegado al final del segundo arreglo, se reinicia el índice y se
         // avanza en el primer arreglo
         if (j < arrNum2.length && i < arrNum2.length) {
-            System.out.println("i: " + i + " j: " + j);
-            System.out.println("result: " + result[i + j + 1]);
-            System.out.println("arrNum1: " + arrNum1[j]);
-            System.out.println("arrNum2: " + arrNum2[i]);
             result[i + j + 1] += arrNum1[j] * arrNum2[i];
             return calcularMultiplicacion(arrNum1, arrNum2, result, i, j+1);
         }

@@ -13,7 +13,7 @@ public class hinduIterativoEstatico {
 	}
 
 	//COdigo Generado por I.A.
-	public static void hindu(int[] num1, int[] num2) {
+	public static int[] hindu(int[] num1, int[] num2) {
 		int m = num1.length;
 		int n = num2.length;
 		int[] result = new int[m + n];
@@ -28,11 +28,7 @@ public class hinduIterativoEstatico {
 			}
 		}
 		
-		//Imprimir Resultado
-		System.out.println("Hindu resultado: ");
-		for (int i = 0 ; i < result.length; i++) {
-			System.out.print(result[i]);
-		}
+		return result;
 	}
 	
 }
