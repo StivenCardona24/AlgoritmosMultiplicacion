@@ -96,7 +96,7 @@ public class InglesaRecursivoEstatico {
 
         // Si se ha llegado al final del segundo arreglo, se reinicia el índice y se
         // avanza en el primer arreglo
-        if (j < arrNum2.length && i < arrNum2.length) {
+        if (j < arrNum1.length && i < arrNum2.length) {
             result[i + j + 1] += arrNum1[j] * arrNum2[i];
             return calcularMultiplicacion(arrNum1, arrNum2, result, i, j+1);
         }
