@@ -103,7 +103,7 @@ public class Aplicacion {
 		tiempos.put("Americano Iterativo Dinamico", elapsedTime);
 
 		startTime = System.nanoTime();
-		AmericanoRecursivoDinamico.americanoRecursivo(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
+		AmericanoRecursivoDinamico.MultitradicionalRecursivo(new ArrayList<>(arregloDinamico1), new ArrayList<>(arregloDinamico2));
 		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Americano Recursivo Dinamico", elapsedTime);
@@ -111,7 +111,7 @@ public class Aplicacion {
 		arregloEstatico1 = ObtenerArreglo(1, tam1);
 		arregloEstatico2 = ObtenerArreglo(2, tam2);
 		startTime = System.nanoTime();
-		AmricanoRecursivoEstatico.americanoRecursivo(arregloEstatico1, arregloEstatico2);
+		AmricanoRecursivoEstatico.MultitradicionalRecursivo(arregloEstatico1, arregloEstatico2);
 		endTime = System.nanoTime();
 		elapsedTime = endTime - startTime;
 		tiempos.put("Americano Recursivo Estatico", elapsedTime);
