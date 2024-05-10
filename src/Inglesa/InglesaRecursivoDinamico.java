@@ -15,9 +15,16 @@ public class InglesaRecursivoDinamico {
 		ArrayList<Integer> arrNum1 = new ArrayList<>();
 		arrNum1.add(2);
 		arrNum1.add(5);
+		arrNum1.add(0);
+		arrNum1.add(2);
+		arrNum1.add(4);
 
 		ArrayList<Integer> arrNum2 = new ArrayList<>();
 		arrNum2.add(5);
+		arrNum2.add(5);
+		arrNum2.add(2);
+		arrNum2.add(3);
+		arrNum2.add(0);
 
 		// Realizar la multiplicación inglesa recursiva
 		ArrayList<Integer> result = multiplicaInglesaRecursiva(arrNum1, arrNum2);
@@ -29,67 +36,88 @@ public class InglesaRecursivoDinamico {
 		}
 	}
 
-	/* Realiza la multiplicación inglesa de dos ArrayList de números enteros de
-	 * forma recursiva.
-	 * @param arreglo1 El primer ArrayList de números enteros
-	 * @param arreglo2 El segundo ArrayList de números enteros
-	 * @return Un ArrayList que representa el resultado de la multiplicación
+	/**
+	 * Realiza la multiplicación inglesa de dos ArrayList de números enteros de forma recursiva.
+	 * @param arrNum1 El primer número a multiplicar
+	 * @param arrNum2 El segundo número a multiplicar
+	 * @return Un ArrayList de números enteros con el resultado de la multiplicación
 	 */
-	public static ArrayList<Integer> multiplicaInglesaRecursiva(ArrayList<Integer> arreglo1,
-			ArrayList<Integer> arreglo2) {
-		ArrayList<Integer> resultado = new ArrayList<>(arreglo1.size() + arreglo2.size());
-		for (int i = 0; i < arreglo1.size() + arreglo2.size(); i++) {
+	public static ArrayList<Integer> multiplicaInglesaRecursiva(ArrayList<Integer> arrNum1, ArrayList<Integer> arrNum2) {
+		// Si alguno de los dos números es cero, el resultado es cero
+		if (arrNum1.size() == 0 || arrNum2.size() == 0) {
+			ArrayList<Integer> result = new ArrayList<>();
+			result.add(0);
+			return result;
+		}
+
+		// Si alguno de los dos números es uno, el resultado es el otro número
+		if (arrNum1.size() == 1 && arrNum1.get(0) == 1) {
+			return arrNum2;
+		}
+		if (arrNum2.size() == 1 && arrNum2.get(0) == 1) {
+			return arrNum1;
+		}
+
+		int tam = arrNum1.size() + arrNum2.size();
+		ArrayList<Integer> resultado = new ArrayList<>();
+		for (int i = 0; i < tam; i++) {
 			resultado.add(0);
 		}
-		return multiplicaInglesaRecursivaHelper(arreglo1, arreglo2, 0, resultado);
+		resultado = calcularMultiplicacion(arrNum1, arrNum2, resultado, 0, 0);
+		return sumarMultiplicacion(resultado, tam-1);
 	}
 
-	/* Función auxiliar para la multiplicación inglesa recursiva.
-	 * @param arreglo1  El primer ArrayList de números enteros
-	 * @param arreglo2  El segundo ArrayList de números enteros
-	 * @param pos       La posición actual en el segundo ArrayList
-	 * @param resultado El ArrayList que almacena el resultado de la multiplicación
-	 * @return Un ArrayList que representa el resultado de la multiplicación
+	/**
+	 * Calcula la multiplicación de dos ArrayList de números enteros de forma recursiva.
+	 * @param arrNum1 El primer número a multiplicar
+	 * @param arrNum2 El segundo número a multiplicar
+	 * @param resultado El ArrayList que almacenará el resultado de la multiplicación
+	 * @param i El índice actual del primer número
+	 * @param j El índice actual del segundo número
+	 * @return Un ArrayList de números enteros con el resultado de la multiplicación
 	 */
-	private static ArrayList<Integer> multiplicaInglesaRecursivaHelper(ArrayList<Integer> arreglo1,
-			ArrayList<Integer> arreglo2, int pos, ArrayList<Integer> resultado) {
-		if (pos >= arreglo2.size()) {
+	private static ArrayList<Integer> calcularMultiplicacion(ArrayList<Integer> arrNum1, ArrayList<Integer> arrNum2, ArrayList<Integer> resultado, int i, int j) {
+		// Si se ha llegado al final de los dos números, se devuelve el resultado
+		if (i == arrNum1.size() && j == arrNum2.size()) {
 			return resultado;
 		}
-		// Actualizar el resultado recursivamente
-		actualizarResultadoRecursivo(arreglo1, arreglo2, resultado, 0, 0);
-		actualizarResultadoRecursivo(resultado, resultado.size() - 1);
-		// Llamar recursivamente para procesar la siguiente posición en el segundo
-		// ArrayList
-		return multiplicaInglesaRecursivaHelper(arreglo1, arreglo2, pos + 1, resultado);
+
+		
+		// Si se ha llegado al final del segundo número, se agrega un cero al resultado
+		if (j < arrNum2.size() && i < arrNum2.size()) {
+			System.out.println("i: " + i + " j: " + j);
+			System.out.println("resultado: " + resultado.get(i+j+1));
+			System.out.println("arrNum1: " + arrNum1.get(j));
+			System.out.println("arrNum2: " + arrNum2.get(i));
+
+			resultado.set(i+j+1, resultado.get(j+i+1) + arrNum1.get(j) * arrNum2.get(i));
+			return calcularMultiplicacion(arrNum1, arrNum2, resultado, i , j+1);
+		}
+
+		// Si se ha llegado al final del primer número, se agrega un cero al resultado
+		if (i < arrNum2.size()) {
+			return calcularMultiplicacion(arrNum1, arrNum2, resultado, i+1, 0);
+		}
+
+		return resultado;
+
 	}
 
-	/* Actualiza recursivamente el resultado de la multiplicación.
-	 * @param arreglo1  El primer ArrayList de números enteros
-	 * @param arreglo2  El segundo ArrayList de números enteros
-	 * @param resultado El ArrayList que almacena el resultado de la multiplicación
-	 * @param i         El índice actual en el primer ArrayList
-	 * @param pos       La posición actual en el segundo ArrayList
+	/**
+	 * Suma los elementos de un ArrayList de números enteros de forma recursiva.
+	 * @param resultado El ArrayList con los números a sumar
+	 * @param tam La longitud del resultado
+	 * @return Un ArrayList de números enteros con el resultado de la suma
 	 */
-	public static void actualizarResultadoRecursivo(ArrayList<Integer> arreglo1, ArrayList<Integer> arreglo2,
-			ArrayList<Integer> resultado, int i, int pos) {
-		if (i < arreglo1.size()) {
-			resultado.set(i + pos + 1, resultado.get(i + pos + 1) + arreglo1.get(i) * arreglo2.get(pos));
-			actualizarResultadoRecursivo(arreglo1, arreglo2, resultado, i + 1, pos);
+	private static ArrayList<Integer> sumarMultiplicacion(ArrayList<Integer> resultado, int tam) {
+		if (tam == 0) {
+			return resultado;
 		}
+
+		resultado.set(tam-1, resultado.get(tam) / 10 + resultado.get(tam-1));	
+		resultado.set(tam, resultado.get(tam) % 10);
+		return sumarMultiplicacion(resultado, tam-1);
 	}
 
-	/* Actualiza recursivamente el resultado de la multiplicación para corregir los
-	 * acarreos.
-	 * @param resultado El ArrayList que almacena el resultado de la multiplicación
-	 * @param k         El índice actual en el ArrayList de resultados
-	 */
-	public static void actualizarResultadoRecursivo(ArrayList<Integer> resultado, int k) {
-		if (k > 0) {
-			resultado.set(k - 1, resultado.get(k - 1) + resultado.get(k) / 10);
-			resultado.set(k, resultado.get(k) % 10);
-			actualizarResultadoRecursivo(resultado, k - 1);
-		}
-	}
 
 }
