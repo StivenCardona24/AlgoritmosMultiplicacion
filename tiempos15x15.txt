@@ -1,0 +1,9 @@
+Americano Iterativo Estatico: 360500 nanosegundos
+Hindu Iterativo Estatico: 430600 nanosegundos
+Inglesa Recursivo Estatico: 447200 nanosegundos
+Inglesa Recursivo Dinamico: 552500 nanosegundos
+Americano Iterativo Dinamico: 569000 nanosegundos
+Inglesa Iterativo Estatico: 637900 nanosegundos
+Inglesa Iterativo Dinamico: 665600 nanosegundos
+Americano Recursivo Dinamico: 1117700 nanosegundos
+Americano Recursivo Estatico: 2112600 nanosegundos
