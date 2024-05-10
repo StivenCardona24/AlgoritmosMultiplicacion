@@ -8,12 +8,20 @@ public class AmericanoIterativoEstaticoDinamico {
 
 	public static void main(String[] args) {
 		ArrayList<Integer> arrNum1 = new ArrayList<>();
-		arrNum1.add(5);
-		arrNum1.add(1);
+		arrNum1.add(9);
+		arrNum1.add(4);
+		arrNum1.add(2);
+		arrNum1.add(2);
+		arrNum1.add(0);
+		arrNum1.add(3);
+		arrNum1.add(8);
 
 		ArrayList<Integer> arrNum2 = new ArrayList<>();
-		arrNum2.add(2);
-		arrNum2.add(4);
+		arrNum2.add(3);
+		arrNum2.add(5);
+		arrNum2.add(8);
+		arrNum2.add(5);
+		arrNum2.add(0);
 
 		ArrayList<Integer> resultado = Multitradicional2(arrNum1, arrNum2);
 

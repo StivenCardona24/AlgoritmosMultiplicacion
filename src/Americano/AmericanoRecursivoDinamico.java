@@ -8,76 +8,56 @@ public class AmericanoRecursivoDinamico {
 
 	public static void main(String[] args) {
 		ArrayList<Integer> arrNum1 = new ArrayList<>();
+		arrNum1.add(9);
+		arrNum1.add(4);
 		arrNum1.add(2);
-		arrNum1.add(5);
+		arrNum1.add(2);
+		arrNum1.add(0);
+		arrNum1.add(3);
+		arrNum1.add(8);
 		ArrayList<Integer> arrNum2 = new ArrayList<>();
-		arrNum2.add(2);
-		americanoRecursivo(arrNum1, arrNum2);
-	}
-	// Cambio de codigo generado manual
-	public static void americanoRecursivo(ArrayList<Integer> arrNum1, ArrayList<Integer> arrNum2) {
-		// Crear una matriz para almacenar los productos parciales
-		int[][] productosParciales = new int[arrNum2.size()][arrNum1.size() + arrNum2.size() + 1];
-
-		calcularProductosParcialesRecursivo(arrNum1, arrNum2, 0, 0, productosParciales);
-		// Calcular la suma total
-		int[] sumaTotal = new int[arrNum1.size() + arrNum2.size() + 1];
-		calcularSumaTotalRecursivo(arrNum1, arrNum2, 0, 0, sumaTotal, productosParciales);
-		// Realizar el acarreo hacia la derecha
-		realizarAcarreoDerechaRecursivo(sumaTotal, sumaTotal.length - 1);
-		int resultado = convertirArregloANumero(sumaTotal, 0, 0);
-		// Imprimir el resultado
-		System.out.println("El resultado de la multiplicación es: " + resultado);
-	}
-
-	// Organiza los numeros en una matriz para posteriormente acomodarlos
-	public static void calcularProductosParcialesRecursivo(ArrayList<Integer> arrNum1, ArrayList<Integer> arrNum2, int i, int j, int[][] productosParciales) {
-		if (i == arrNum2.size()) {
-			// Hemos procesado todos los elementos de arrNum2, salimos de la recursión
-			return;
-		}
-		if (j < arrNum1.size()) {
-			// Calculamos el producto parcial y lo almacenamos en la matriz
-			productosParciales[i][j + i] = arrNum1.get(j) * arrNum2.get(i);
-			// Llamada recursiva para el siguiente elemento de arrNum1
-			calcularProductosParcialesRecursivo(arrNum1, arrNum2, i, j + 1, productosParciales);
-		} else {
-			// Pasamos al siguiente dígito de arrNum2
-			calcularProductosParcialesRecursivo(arrNum1, arrNum2, i + 1, 0, productosParciales);
+		arrNum2.add(3);
+		arrNum2.add(5);
+		arrNum2.add(8);
+		arrNum2.add(5);
+		arrNum2.add(0);
+		ArrayList<Integer> resultado= MultitradicionalRecursivo(arrNum1, arrNum2);
+		System.out.println("RESULTADO: ");
+		for (int i = 0; i < resultado.size(); i++) {
+			System.out.print(resultado.get(i));
 		}
 	}
 
-	// Suma los numeros que se encuentran en la misma posicion vertical en la matriz
-	public static void calcularSumaTotalRecursivo(ArrayList<Integer> arrNum1, ArrayList<Integer> arrNum2, int i, int j, int[] sumaTotal, int[][] productosParciales) {
-		if (i < arrNum2.size()) {
-			if (j < arrNum1.size() + arrNum2.size() + 1) {
-				// Sumamos el producto parcial a la suma total
-				sumaTotal[j] += productosParciales[i][j];
-				// Llamada recursiva para el siguiente índice j
-				calcularSumaTotalRecursivo(arrNum1, arrNum2, i, j + 1, sumaTotal, productosParciales);
-			} else {
-				// Pasamos al siguiente índice i
-				calcularSumaTotalRecursivo(arrNum1, arrNum2, i + 1, 0, sumaTotal, productosParciales);
-			}
-		}
+	public static ArrayList<Integer>  MultitradicionalRecursivo(ArrayList<Integer>  arreglo1, ArrayList<Integer>  arreglo2) {
+		int k = arreglo1.size() + arreglo2.size() - 1;
+		int pos = k;
+		ArrayList<Integer> resultado = new ArrayList<>();
+		for (int i = 0; i < arreglo1.size() + arreglo2.size(); i++) {
+            resultado.add(0);
+        }
+		ciclosuperior(arreglo1, arreglo2, resultado, k, pos, arreglo1.size() - 1);
+		return resultado;
 	}
 
-	public static void realizarAcarreoDerechaRecursivo(int[] sumaTotal, int i) {
-		if (i > 0) {
-			sumaTotal[i - 1] += sumaTotal[i] / 10;
-			sumaTotal[i] %= 10;
-			// Llamada recursiva para el siguiente índice i
-			realizarAcarreoDerechaRecursivo(sumaTotal, i - 1);
-		}
+	private static void ciclosuperior(ArrayList<Integer>  arreglo1, ArrayList<Integer>  arreglo2, ArrayList<Integer>  resultado, int k, int pos, int indice) {
+		if (indice >= 0) {
+			multiplicarArreglosRecursivo(arreglo1, arreglo2, resultado, indice, arreglo2.size() - 1, k);
+			k = pos;
+            ciclosuperior(arreglo1,arreglo2,resultado,k -1,pos -1 , indice-1);
+        }
 	}
 
-	// Convertir el resultado de la multiplicación a un número entero
-	public static int convertirArregloANumero(int[] sumaTotal, int i, int resultado) {
-		if (i < sumaTotal.length - 2) {
-			return convertirArregloANumero(sumaTotal, i + 1, resultado * 10 + sumaTotal[i]);
-		} else {
-			return resultado;
-		}
-	}
+	public static void multiplicarArreglosRecursivo(ArrayList<Integer>  arreglo1, ArrayList<Integer>  arreglo2, ArrayList<Integer> resultado, int i, int j, int k) {
+        if (j >= 0) {
+			resultado.set(k, resultado.get(k) + arreglo1.get(i) * arreglo2.get(j));
+			if (resultado.get(k) > 9) {
+                resultado.set(k - 1, resultado.get(k - 1) + resultado.get(k) / 10);
+                resultado.set(k, resultado.get(k) % 10);
+            }
+
+			k--;
+            multiplicarArreglosRecursivo(arreglo1, arreglo2, resultado, i, j - 1, k);
+        }
+    }
 
 }

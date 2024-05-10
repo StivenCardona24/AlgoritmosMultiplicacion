@@ -7,8 +7,8 @@ import java.util.Arrays;
 public class hinduIterativoEstatico {
 
 	public static void main(String[] args) {
-		int[] arrNum1 = { 4, 5 };
-		int[] arrNum2 = { 2, 3 ,4 };
+		int[] arrNum1 = { 9, 4, 2, 2, 0, 3, 8};
+		int[] arrNum2 = { 3, 5, 8, 5, 0};
 		hinduIterativoEstatico.hindu(arrNum1, arrNum2);
 	}
 
