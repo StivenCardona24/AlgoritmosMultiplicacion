@@ -71,8 +71,9 @@ public class InglesaRecursivoEstatico {
         }
 
         int tam = arrNum1.length + arrNum2.length;
-        int[] result = calcularMultiplicacion(arrNum1, arrNum2, new int[tam], 0, 0);
-        return sumarMultiplicacion(result, tam-1);
+        int[] result = new int[tam];
+        calcularMultiplicacion1(arrNum1, arrNum2, result, 0, 0);
+        return sumarMultiplicacion(result, tam - 1);
     }
 
     /**
@@ -87,38 +88,31 @@ public class InglesaRecursivoEstatico {
      * @return Un arreglo de números enteros con el resultado de la multiplicación
      */
 
-    private static int[] calcularMultiplicacion(int[] arrNum1, int[] arrNum2, int[] result, int i, int j) {
+    private static void calcularMultiplicacion1(int[] arrNum1, int[] arrNum2, int[] result, int i, int j) {
 
-        // Si se ha llegado al final de los dos arreglos, se devuelve el resultado
-        if (i == arrNum1.length && j == arrNum2.length) {
-            return result;
-        }
-
-        // Si se ha llegado al final del segundo arreglo, se reinicia el índice y se
-        // avanza en el primer arreglo
-        if (j < arrNum1.length && i < arrNum2.length) {
-            result[i + j + 1] += arrNum1[j] * arrNum2[i];
-            return calcularMultiplicacion(arrNum1, arrNum2, result, i, j+1);
-        }
-        
+        if(i < arrNum1.length && j < arrNum2.length) {
+            calcularMultiplicacion2(arrNum1, arrNum2, result, i, j);
         // Si se ha llegado al final del primer arreglo, se reinicia el índice y se
         // avanza en el segundo arreglo
-        if (i < arrNum2.length) {
-            return calcularMultiplicacion(arrNum1, arrNum2, result, i + 1, 0 );
+         calcularMultiplicacion1(arrNum1, arrNum2, result, i + 1, 0);
         }
+    }
 
-        return result;
+    private static  void calcularMultiplicacion2(int[] arrNum1, int[] arrNum2, int[] result, int i, int j) {
+        if (j < arrNum1.length) {
+            result[i + j + 1] += arrNum1[j] * arrNum2[i];
+            calcularMultiplicacion2(arrNum1, arrNum2, result, i, j + 1);
+        }
 
     }
 
-
     public static int[] sumarMultiplicacion(int[] result, int k) {
-       if(k == 0){
-           return result;
-       }
+        if (k == 0) {
+            return result;
+        }
         result[k - 1] += result[k] / 10;
         result[k] %= 10;
-        return sumarMultiplicacion(result, k-1);
+        return sumarMultiplicacion(result, k - 1);
     }
 
 }

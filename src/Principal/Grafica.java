@@ -24,17 +24,17 @@ public class Grafica extends ApplicationFrame {
 
     public static void main(String[] args) {
         // Leer los datos del primer archivo de tiempos
-        Map<String, Long> tiempos1 = leerDatosDesdeTXT("tiempos15x15.txt");
+        Map<String, Long> tiempos1 = leerDatosDesdeTXT("tiempos1024x1024.txt");
         // Leer los datos del segundo archivo de tiempos
-        Map<String, Long> tiempos2 = leerDatosDesdeTXT("tiempos7x7.txt");
+        Map<String, Long> tiempos2 = leerDatosDesdeTXT("tiempos2048x2048.txt");
 
         // Crear un conjunto de datos para la gráfica
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (Map.Entry<String, Long> entry : tiempos1.entrySet()) {
-            dataset.addValue(entry.getValue(), "Multiplicación 15 x 15", entry.getKey());
+            dataset.addValue(entry.getValue(), "Multiplicación 1024 x 1024", entry.getKey());
         }
         for (Map.Entry<String, Long> entry : tiempos2.entrySet()) {
-            dataset.addValue(entry.getValue(), "Multiplicación 7 x 7", entry.getKey());
+            dataset.addValue(entry.getValue(), "Multiplicación 2048 x 2048", entry.getKey());
         }
 
         // Crear la gráfica

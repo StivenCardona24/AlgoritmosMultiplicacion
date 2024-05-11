@@ -24,8 +24,8 @@ import Inglesa.InglesaRecursivoEstatico;
 public class Aplicacion {
 
 	public static void main(String[] args) {
-		int tam1 = 32; // Tamaño deseado para los arreglos
-		int tam2 = 32;
+		int tam1 = 2048; // Tamaño deseado para los arreglos
+		int tam2 = 2048;
 
 		int[] arregloEstatico1 = ObtenerArreglo(1, tam1);
 		int[] arregloEstatico2 = ObtenerArreglo(2, tam2);

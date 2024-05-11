@@ -1,0 +1,8 @@
+Americano Recursivo Estatico: 814900 nanosegundos
+Inglesa Iterativo Estatico: 816900 nanosegundos
+Americano Iterativo Estatico: 1033600 nanosegundos
+Hindu Iterativo Estatico: 1101300 nanosegundos
+Americano Recursivo Dinamico: 2567600 nanosegundos
+Divide y Venceras: 2877700 nanosegundos
+Inglesa Iterativo Dinamico: 3510400 nanosegundos
+Americano Iterativo Dinamico: 4727100 nanosegundos

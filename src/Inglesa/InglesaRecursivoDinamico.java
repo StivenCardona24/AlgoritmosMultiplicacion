@@ -63,7 +63,7 @@ public class InglesaRecursivoDinamico {
 		for (int i = 0; i < tam; i++) {
 			resultado.add(0);
 		}
-		resultado = calcularMultiplicacion(arrNum1, arrNum2, resultado, 0, 0);
+		resultado = calcularMultiplicacion1(arrNum1, arrNum2, resultado, 0, 0);
 		return sumarMultiplicacion(resultado, tam-1);
 	}
 
@@ -76,7 +76,7 @@ public class InglesaRecursivoDinamico {
 	 * @param j El índice actual del segundo número
 	 * @return Un ArrayList de números enteros con el resultado de la multiplicación
 	 */
-	private static ArrayList<Integer> calcularMultiplicacion(ArrayList<Integer> arrNum1, ArrayList<Integer> arrNum2, ArrayList<Integer> resultado, int i, int j) {
+	private static ArrayList<Integer> calcularMultiplicacion1(ArrayList<Integer> arrNum1, ArrayList<Integer> arrNum2, ArrayList<Integer> resultado, int i, int j) {
 		// Si se ha llegado al final de los dos números, se devuelve el resultado
 		if (i == arrNum1.size() && j == arrNum2.size()) {
 			return resultado;
@@ -84,14 +84,25 @@ public class InglesaRecursivoDinamico {
 
 		
 		// Si se ha llegado al final del segundo número, se agrega un cero al resultado
-		if (j < arrNum1.size() && i < arrNum2.size()) {
-			resultado.set(i+j+1, resultado.get(j+i+1) + arrNum1.get(j) * arrNum2.get(i));
-			return calcularMultiplicacion(arrNum1, arrNum2, resultado, i , j+1);
-		}
+	    calcularMultiplicacion2(arrNum1, arrNum2, resultado, i , j);
+		
 
 		// Si se ha llegado al final del primer número, se agrega un cero al resultado
 		if (i < arrNum2.size()) {
-			return calcularMultiplicacion(arrNum1, arrNum2, resultado, i+1, 0);
+			return calcularMultiplicacion1(arrNum1, arrNum2, resultado, i+1, 0);
+		}
+
+		return resultado;
+
+	}
+
+	private static ArrayList<Integer> calcularMultiplicacion2(ArrayList<Integer> arrNum1, ArrayList<Integer> arrNum2, ArrayList<Integer> resultado, int i, int j) {
+
+		
+		// Si se ha llegado al final del segundo número, se agrega un cero al resultado
+		if (j < arrNum1.size() && i < arrNum2.size()) {
+			resultado.set(i+j+1, resultado.get(j+i+1) + arrNum1.get(j) * arrNum2.get(i));
+			return calcularMultiplicacion2(arrNum1, arrNum2, resultado, i , j+1);
 		}
 
 		return resultado;
